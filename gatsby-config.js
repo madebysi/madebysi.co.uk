@@ -15,13 +15,6 @@ module.exports = {
                 accessToken: !!process.env.IS_PREVIEW ? process.env.ACCESS_TOKEN_PREVIEW : process.env.ACCESS_TOKEN,
                 host: !!process.env.IS_PREVIEW ? 'preview.contentful.com' : ''
             }
-        },
-        {
-            resolve: 'gatsby-plugin-google-analytics',
-            options: {
-                trackingId: 'UA-112910334-1',
-                anonymize: true
-            }
         }
     ]
 };
