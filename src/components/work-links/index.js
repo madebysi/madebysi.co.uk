@@ -7,27 +7,37 @@ import {
     fontRegular,
     LinkHover,
     LinkHoverIntro,
+    maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
 } from '../../styles';
 import formatLink from '../../utils/format-link';
 
+const Bg = styled.div`
+    background-color: #f9f9f9;
+    width: 100%;
+`;
+
 const Wrapper = styled.div`
     ${'' /* border: 10px dashed purple; */}
     background-color: #f9f9f9;
+    position: relative;
     width: 100%;
+    max-width: ${maxGridWidth}px;
+    margin: 0 auto;
 `;
 
 const Inner = styled.div`
     position: relative;
     z-index: 20;
     ${fontRegular}
-    font-size: 48px;
+    font-size: 30px;
     line-height: 1.65;
     margin: ${standardMargin}%;
 
     ${media.md`
+        font-size: 48px;
         margin: ${standardMarginMd}%;
         width: ${columns(9)}%;
     `}
@@ -35,7 +45,10 @@ const Inner = styled.div`
 
 const Links = styled.div`
     position: relative;
-    z-index: 20;
+
+    ${media.md`
+        z-index: 20;
+    `}
 `;
 
 const MenuLink = styled(Link)`
@@ -50,9 +63,11 @@ const LinkItem = styled.span`
     transition:
         opacity 0.1s linear,
         color 0.1s linear;
+    margin-bottom: 10px;
 
     ${media.md`
         display: inline;
+        margin-bottom: 0;
         &:after {
             content: ", ";
             opacity: ${({active, hover}) => !hover || !active ? 1 : 0.3};
@@ -94,13 +109,15 @@ export const LinkList = ({
 );
 
 export default props => (
-    <Wrapper>
-        {/* <pre>{JSON.stringify(page, null, 2)}</pre> */}
-        <Inner>
-            <LinkList
-                {...props}
-                pages={props.pages.filter(({id}) => id !== props.page.id)}
-            />
-        </Inner>
-    </Wrapper>
+    <Bg>
+        <Wrapper>
+            {/* <pre>{JSON.stringify(page, null, 2)}</pre> */}
+            <Inner>
+                <LinkList
+                    {...props}
+                    pages={props.pages.filter(({id}) => id !== props.page.id)}
+                />
+            </Inner>
+        </Wrapper>
+    </Bg>
 );

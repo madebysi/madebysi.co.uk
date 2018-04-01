@@ -3,12 +3,20 @@ import styled from 'styled-components';
 import {
     colors,
     fontRegular,
+    maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
 } from '../../styles';
 
-const Wrapper = styled.article`
+const Wrapper = styled.div`
+    position: relative;
+    width: 100%;
+    max-width: ${maxGridWidth}px;
+    margin: 0 auto;
+`;
+
+const Inner = styled.div`
     ${'' /* border: 10px dashed red; */}
     padding: 0 ${standardMargin}%;
     width: 100%;
@@ -21,7 +29,7 @@ const Wrapper = styled.article`
 const Title = styled.h1`
     color: ${colors.black};
     ${fontRegular};
-    font-size: 48px;
+    font-size: 30px;
     line-height: 1;
     margin: 0 0 28px;
 
@@ -33,13 +41,14 @@ const Title = styled.h1`
 const SubTitle = styled.h3`
     color: ${colors.blue};
     ${fontRegular};
-    font-size: 22px;
+    font-size: 18px;
     line-height: 1;
-    margin: 0 0 86px;
+    margin: 0 0 46px;
     opacity: 0.5;
 
     ${media.md`
         font-size: 22px;
+        margin: 0 0 86px;
     `}
 `;
 
@@ -48,7 +57,9 @@ export default ({
     subTitle
 }) => (
     <Wrapper>
-        <Title>{title}</Title>
-        <SubTitle>{subTitle}</SubTitle>
+        <Inner>
+            <Title>{title}</Title>
+            <SubTitle>{subTitle}</SubTitle>
+        </Inner>
     </Wrapper>
 );

@@ -23,7 +23,7 @@ const Container = styled.div`
 `;
 
 const Menu = styled.nav`
-    background-color: ${({dark}) => dark ? colors.black : colors.white};
+    background-color: ${({dark}) => dark ? colors.blackest : colors.white};
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -32,7 +32,7 @@ const Menu = styled.nav`
     right: ${({isClosed}) => !isClosed ? 0 : -100}%;
     transition: right .2s ease-out;
     padding: 0 ${standardMargin}%;
-    margin-top: 150px;
+    margin-top: 108px;
     flex-grow: 1;
 
     ${media.md`
@@ -50,8 +50,10 @@ const Menu = styled.nav`
 const Links = styled.ul`
     display: flex;
     flex-direction: column;
+    margin-top: 50px;
 
     ${media.md`
+        margin-top: 0;
         flex-direction: row;
     `}
 `;

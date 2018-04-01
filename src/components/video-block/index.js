@@ -2,24 +2,34 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import {
     colors,
+    maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
 } from '../../styles';
 
 const Wrapper = styled.div`
+    background: rgba(0, 0, 0, 0.3);
     position: relative;
     width: 100%;
 `;
 
+const Bg = styled.div`
+    position: relative;
+    width: 100%;
+    ${'' /* max-width: ${maxGridWidth}px; */}
+    ${'' /* margin: 0 auto; */}
+`;
+
 const Inner = styled.div`
-    background: rgba(0, 0, 0, 0.3);
     position: relative;
     width: 100%;
     padding: ${standardMargin}%;
 
     ${media.md`
         padding: ${standardMarginMd}%;
+        max-width: calc(${maxGridWidth}px + ${standardMarginMd * 2}%);
+        margin: 0 auto;
     `}
 `;
 
@@ -84,29 +94,31 @@ export default class VideoBlock extends Component {
 
         return (
             <Wrapper>
-                <Inner>
-                    <Video
-                        innerRef={video => (this.video = video)}
-                        id={id}
-                        ref={el => (this.el = el)}
-                        muted
-                        autoPlay={autoLoop}
-                        loop={autoLoop}
-                        playsInline
-                        onClick={() => this.onPause()}>
-                        <source
-                            src={url}
-                            type={contentType}
-                        />
-                    </Video>
-                    {!autoLoop && (
-                        <PlayButton
-                            playing={this.state.playing}
-                            onClick={() => this.onPlay()}>
+                <Bg>
+                    <Inner>
+                        <Video
+                            innerRef={video => (this.video = video)}
+                            id={id}
+                            ref={el => (this.el = el)}
+                            muted
+                            autoPlay={autoLoop}
+                            loop={autoLoop}
+                            playsInline
+                            onClick={() => this.onPause()}>
+                            <source
+                                src={url}
+                                type={contentType}
+                            />
+                        </Video>
+                        {!autoLoop && (
+                            <PlayButton
+                                playing={this.state.playing}
+                                onClick={() => this.onPlay()}>
                         play
-                        </PlayButton>
-                    )}
-                </Inner>
+                            </PlayButton>
+                        )}
+                    </Inner>
+                </Bg>
             </Wrapper>
         );
     }

@@ -4,22 +4,30 @@ import HeaderLogo from '../header-logo';
 import Menu from '../menu';
 import {
     media,
+    maxGridWidth,
     standardMargin,
     standardMarginMd
 } from '../../styles';
 
 const Header = styled.header`
+    ${'' /* border: 10px dashed red; */}
     position: relative;
-    left: 0;
-    top: 0;
+    width: 100%;
+    max-width: ${maxGridWidth}px;
+    margin: 0 auto;
+    ${'' /* left: 0;
+    top: 0; */}
+    ${'' /* background: ${({isScrolled}) => isScrolled ? colors.black : 'transparent'}; */}
+    ${'' /* transition: background 0.3s ease; */}
+`;
+
+const Inner = styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 5;
     width: 100%;
-    ${'' /* padding: 21px 25px; */}
-    ${'' /* background: ${({isScrolled}) => isScrolled ? colors.black : 'transparent'}; */}
-    ${'' /* transition: background 0.3s ease; */}
     padding: 40px ${standardMargin}%;
 
     ${media.md`
@@ -68,22 +76,20 @@ export default class HeaderComponent extends Component {
         } = this.props;
 
         return (
-            <pre>{JSON.stringify(this.props, null, 2)}</pre>
-        );
-
-        return (
             <Header
                 isScrolled={this.state.isScrolled}>
-                <Menu
-                    dark={dark}
-                    links={links}
-                    buttons={buttons}
-                    socials={socials}
-                />
-                <HeaderLogo
-                    dark={dark}
-                    to={'/'}
-                />
+                <Inner>
+                    <Menu
+                        dark={dark}
+                        links={links}
+                        buttons={buttons}
+                        socials={socials}
+                    />
+                    <HeaderLogo
+                        dark={dark}
+                        to={'/'}
+                    />
+                </Inner>
             </Header>
         );
     }

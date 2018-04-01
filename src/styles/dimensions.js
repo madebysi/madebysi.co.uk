@@ -23,7 +23,8 @@ export const columns = (count, add = 0) => {
     return add + roundTo((column * count + columnGutter * (count - 1)) / layoutWidthMd, 2) * 100;
 };
 
-export const maxSiteWidth = layoutWidthMd * 2;
+export const maxSiteWidth = 1920;
+export const maxGridWidth = 1600;
 
 export const toPercent = px => roundTo(px / layoutWidth * 100, 2);
 export const toPercentMd = px => roundTo(px / layoutWidthMd * 100, 2);

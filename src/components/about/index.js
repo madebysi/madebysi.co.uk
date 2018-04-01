@@ -4,6 +4,7 @@ import {
     colors,
     fontRegular,
     LinkHover,
+    maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -11,7 +12,15 @@ import {
 
 
 const Wrapper = styled.div`
-    padding: 40px ${standardMargin}%;
+    position: relative;
+    width: 100%;
+    max-width: ${maxGridWidth}px;
+    margin: 0 auto;
+`;
+
+const Inner = styled.div`
+    padding: 0 ${standardMargin}%;
+    width: 100%;
 
     ${media.md`
         padding: 40px ${standardMarginMd}%;
@@ -22,8 +31,12 @@ const Text = styled.div`
     color: ${colors.white};
     ${fontRegular};
     font-weight: normal;
-    font-size: 60px;
+    font-size: 30px;
     line-height: 1.2;
+
+    ${media.md`
+        font-size: 60px;
+    `}
 
     a {
         color: ${colors.grey};
@@ -44,8 +57,10 @@ export default ({
     text: {childMarkdownRemark: {html}}
 }) => (
     <Wrapper>
-        <Text dangerouslySetInnerHTML={{
-            __html: html
-        }}/>
+        <Inner>
+            <Text dangerouslySetInnerHTML={{
+                __html: html
+            }}/>
+        </Inner>
     </Wrapper>
 );

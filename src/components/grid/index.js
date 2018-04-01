@@ -4,7 +4,7 @@ import {
     column,
     columnGutter,
     layoutWidthMd,
-    maxSiteWidth,
+    maxGridWidth,
     media,
     numColumns,
     siteMarginMd,
@@ -23,7 +23,7 @@ const Grid = styled.div`
     width: 100%;
     height: 100vh;
     left: 50%;
-    max-width: ${maxSiteWidth}px;
+    max-width: ${maxGridWidth}px;
     transform: translate(-50%, 0px);
     z-index: 200;
     pointer-events: none;
@@ -79,7 +79,7 @@ export default class GridComponent extends Component {
         this.toggle = this.toggle.bind(this);
 
         this.state = {
-            isVisible: false
+            isVisible: !!props.show
         };
     }
 
@@ -99,7 +99,7 @@ export default class GridComponent extends Component {
 
     render() {
         return (
-            <Grid isVisible={this.state.isVisible || this.props.show}>
+            <Grid isVisible={this.state.isVisible}>
                 <GridMd>
                     {linesMd.map(left => <Line key={left} left={roundTo(left * 100, 1)}/>)}
                 </GridMd>

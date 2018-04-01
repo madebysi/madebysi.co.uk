@@ -1,12 +1,11 @@
 import {css} from 'styled-components';
-import {siteMaxWidth} from './dimensions';
+import {maxGridWidth} from './dimensions';
 
 export const sizes = {
-    xsm: [320, 'max'],
-    min: [639, 'max'],
+    min: [320, 'max'],
     sm: [640],
-    md: [1220],
-    lg: [siteMaxWidth]
+    md: [1024],
+    lg: [maxGridWidth]
 };
 
 export const media = Object.keys(sizes).reduce((ob, key) => {

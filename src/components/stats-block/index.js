@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {
     colors,
     fontRegular,
+    maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -11,7 +12,14 @@ import {
 const Wrapper = styled.article`
     position: relative;
     width: 100%;
-    padding: ${standardMargin / 2}% ${standardMargin}%;
+    max-width: ${maxGridWidth}px;
+    margin: 0 auto;
+`;
+
+const Inner = styled.div`
+    position: relative;
+    width: 100%;
+    padding: ${standardMargin}% ${standardMargin}%;
 
     ${media.md`
         padding: ${standardMarginMd / 2}% ${standardMarginMd}%;
@@ -51,13 +59,15 @@ export default ({
     stats
 }) => (
     <Wrapper>
-        <StatsList>
-            {stats.map(({name, value}) => (
-                <StatsItem key={name + value}>
-                    <Name>{name}</Name>
-                    <Value>{value}</Value>
-                </StatsItem>
-            ))}
-        </StatsList>
+        <Inner>
+            <StatsList>
+                {stats.map(({name, value}) => (
+                    <StatsItem key={name + value}>
+                        <Name>{name}</Name>
+                        <Value>{value}</Value>
+                    </StatsItem>
+                ))}
+            </StatsList>
+        </Inner>
     </Wrapper>
 );

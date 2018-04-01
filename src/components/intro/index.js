@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import {
     columns,
+    maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -13,12 +14,21 @@ import mobile from 'usfl/platform/mobile';
 const isMobile = mobile();
 
 const Wrapper = styled.div`
-    ${'' /* border: 10px dashed purple; */}
     width: 100%;
+    max-width: ${maxGridWidth}px;
+    margin: 0 auto;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+
+    ${media.md`
+        justify-content: flex-end;
+    `}
+`;
+
+const Inner = styled.div`
+    ${'' /* border: 10px dashed purple; */}
+    width: 100%;
 `;
 
 const TextHolder = styled.div`
@@ -34,10 +44,19 @@ const TextHolder = styled.div`
         margin-top: 0;
         width: ${columns(11)}%;
     `}
+
+    ${media.lg`
+        font-size: 80px;
+    `}
 `;
 
 const Intro = styled.div`
     opacity: 0.4;
+    margin-bottom: 12px;
+
+    ${media.md`
+        margin-bottom: 0;
+    `}
 `;
 
 export default class IntroComponent extends Component {
@@ -59,31 +78,34 @@ export default class IntroComponent extends Component {
 
         return (
             <Wrapper>
-                <TextHolder>
-                    <Intro dangerouslySetInnerHTML={{
-                        __html: html
-                    }}/>
-                    <LinkList
-                        hover={this.state.hover}
-                        hoverSlug={this.state.hoverSlug}
-                        pages={pages}
-                        onMouseOver={hoverSlug => this.setState({
-                            hover: true,
-                            hoverSlug
-                        })}
-                        onMouseOut={() => this.setState({
-                            hover: false
-                        })}
-                        LinkComponent={LinkComponent}
-                    />
-                </TextHolder>
-                {!isMobile && (
-                    <HoverMedia
-                        hover={this.state.hover}
-                        hoverSlug={this.state.hoverSlug}
-                        pages={pages}
-                    />
-                )}
+                <Inner>
+                    <TextHolder>
+                        <Intro dangerouslySetInnerHTML={{
+                            __html: html
+                        }}/>
+                        <LinkList
+                            intro
+                            hover={this.state.hover}
+                            hoverSlug={this.state.hoverSlug}
+                            pages={pages}
+                            onMouseOver={hoverSlug => this.setState({
+                                hover: true,
+                                hoverSlug
+                            })}
+                            onMouseOut={() => this.setState({
+                                hover: false
+                            })}
+                            LinkComponent={LinkComponent}
+                        />
+                    </TextHolder>
+                    {!isMobile && (
+                        <HoverMedia
+                            hover={this.state.hover}
+                            hoverSlug={this.state.hoverSlug}
+                            pages={pages}
+                        />
+                    )}
+                </Inner>
             </Wrapper>
         );
     }

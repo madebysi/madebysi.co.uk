@@ -84,12 +84,6 @@ export default ({
                         <Component {...m} page={page} work={work}/>
                     </Section>
                 );
-                // return (
-                //     <Section id={m.id} data-component={type} key={type + m.id}>
-                //         <h1>{type}</h1>
-                //         <Component {...m} page={page} work={work}/>
-                //     </Section>
-                // );
             })}
             {process.env.NODE_ENV === 'development' && (
                 <Grid show/>
