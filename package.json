@@ -1,0 +1,63 @@
+{
+  "name": "madebysi.co.uk",
+  "version": "1.0.0",
+  "description": "madebysi.co.uk website",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madebysi/madebysi.co.uk"
+  },
+  "main": "n/a",
+  "scripts": {
+    "clean": "rm -rf public .cache",
+    "build": "gatsby build",
+    "start": "npm run clean && gatsby develop --host localhost",
+    "lint": "eslint 'src/**/*.js'; exit 0",
+    "test": "npm run lint && jest --updateSnapshot --maxWorkers=2"
+  },
+  "author": "Ian McGregor <ian@mcgregor.codes>",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "5.0.1",
+    "gatsby": "1.9.231",
+    "gatsby-image": "1.0.41",
+    "gatsby-link": "1.6.39",
+    "gatsby-plugin-google-analytics": "1.0.22",
+    "gatsby-plugin-react-helmet": "2.0.7",
+    "gatsby-plugin-styled-components": "2.0.9",
+    "gatsby-source-contentful": "1.3.43",
+    "gatsby-source-filesystem": "1.5.27",
+    "gatsby-transformer-remark": "1.7.36",
+    "normalize.css": "8.0.0",
+    "nuka-carousel": "^4.0.0",
+    "react-helmet": "5.2.0",
+    "styled-components": "2.2.1",
+    "usfl": "^3.2.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.2",
+    "babel-jest": "22.4.1",
+    "babel-loader": "7.1.1",
+    "babel-preset-react-app": "^3.1.1",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-15": "1.0.5",
+    "eslint": "4.18.2",
+    "eslint-plugin-react": "7.7.0",
+    "isomorphic-fetch": "2.2.1",
+    "jest": "22.4.2",
+    "react-addons-test-utils": "15.6.2",
+    "react-test-renderer": "16.2.0",
+    "sitemap": "1.13.0"
+  },
+  "resolutions": {
+    "graphql": "^0.11.7"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/file-mock.js",
+      "\\.(css|less)$": "<rootDir>/test/__mocks__/style-mock.js"
+    }
+  }
+}

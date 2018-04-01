@@ -1,0 +1,10 @@
+.env
+node_modules
+npm-debug.log
+.cache/
+public/
+.DS_Store
+yarn-error.log
+yarn.lock
+__snapshots__
+temp/
