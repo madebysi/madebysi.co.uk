@@ -5,6 +5,7 @@ import Carousel from 'nuka-carousel';
 import {
     colors,
     fontRegular,
+    maxSiteWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -22,6 +23,7 @@ const Wrapper = styled.div`
 
 const ImgHolder = styled.div`
     width: 100vw;
+    max-width: ${maxSiteWidth}px;
     opacity: ${({loaded}) => loaded ? 1 : 0};
     transition: all 0.3s ease-in;
     cursor: url(${({cursor}) => cursor}), auto;
@@ -53,17 +55,18 @@ class ImgLoader extends Component {
 const Counter = styled.div`
     color: ${colors.black};
     ${fontRegular};
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
     opacity: 0.5;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
-    margin: ${standardMargin - 2}% ${standardMargin}%;
+    margin: ${standardMargin / 2}% ${standardMargin}%;
 
     ${media.md`
-        margin: ${standardMarginMd - 2}% ${standardMarginMd}%;
+        font-size: 16px;
+        margin: ${standardMarginMd / 2}% ${standardMarginMd}%;
     `}
 `;
 

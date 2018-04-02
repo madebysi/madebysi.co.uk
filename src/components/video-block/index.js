@@ -34,7 +34,7 @@ const Inner = styled.div`
 const PlayButton = styled.button`
     cursor: pointer;
     color: ${colors.white};
-    font-size: 48px;
+    font-size: 30px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -42,6 +42,10 @@ const PlayButton = styled.button`
     z-index: 1;
     opacity: ${({playing}) => playing ? 0 : 1};
     transition: opacity 0.2s ease;
+
+    ${media.md`
+        font-size: 48px;
+    `}
 `;
 
 const Video = styled.video`
