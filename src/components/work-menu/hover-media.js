@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    position: fixed;
+    position: ${({fullPage}) => fullPage ? 'fixed' : 'absolute'};
     width: 100%;
     height: 100%;
     left: 0;
@@ -74,9 +74,10 @@ const Media = ({
 export default ({
     pages,
     hover,
-    hoverSlug
+    hoverSlug,
+    fullPage
 }) => (
-    <Wrapper>
+    <Wrapper fullPage={fullPage}>
         {pages.map(({
             slug,
             hoverMedia: {file}

@@ -71,7 +71,7 @@ const Counter = styled.div`
 `;
 
 const settings = {
-    // wrapAround: true,
+    wrapAround: true,
     slidesToScroll: 1,
     slidesToShow: 1,
     // cellAlign: 'center',
@@ -101,15 +101,15 @@ export default class Gallery extends Component {
         const pos = event.clientX / window.innerWidth;
         let direction = 0;
         let cursor = 'auto';
-        const {slideIndex} = this.state;
-        const last = this.props.images.length - 1;
-        if (pos > 0.6 && slideIndex < last) {
-        // if (pos > 0.6) {
+        // const {slideIndex} = this.state;
+        // const last = this.props.images.length - 1;
+        // if (pos > 0.6 && slideIndex < last) {
+        if (pos > 0.6) {
             direction = 1;
             cursor = arrowRight;
         }
-        if (pos < 0.4 && slideIndex > 0) {
-        // if (pos < 0.4) {
+        // if (pos < 0.4 && slideIndex > 0) {
+        if (pos < 0.4) {
             direction = -1;
             cursor = arrowLeft;
         }
@@ -124,30 +124,37 @@ export default class Gallery extends Component {
     onClick(event) {
         event.stopPropagation();
         if (this.state.direction !== 0) {
-            const slideIndex = this.state.slideIndex + this.state.direction;
+            let slideIndex = this.state.slideIndex + this.state.direction;
             const last = this.props.images.length - 1;
-            if (slideIndex < 0 || slideIndex > last) {
-                this.setState({
-                    direction: 0,
-                    cursor: 'auto'
-                });
-            } else {
-                this.setState({slideIndex});
+            if (slideIndex > last) {
+                slideIndex = 0;
             }
+            if (slideIndex < 0) {
+                slideIndex = last;
+            }
+            // if (slideIndex < 0 || slideIndex > last) {
+            //     this.setState({
+            //         direction: 0,
+            //         cursor: 'auto'
+            //     });
+            // } else {
+            //     this.setState({slideIndex});
+            // }
+            this.setState({slideIndex});
         }
     }
 
     afterSlide(slideIndex) {
-        const last = this.props.images.length - 1;
-        if (slideIndex === 0 || slideIndex === last) {
-            this.setState({
-                direction: 0,
-                cursor: 'auto',
-                slideIndex
-            });
-        } else {
-            this.setState({slideIndex});
-        }
+        // const last = this.props.images.length - 1;
+        // if (slideIndex === 0 || slideIndex === last) {
+        //     this.setState({
+        //         direction: 0,
+        //         cursor: 'auto',
+        //         slideIndex
+        //     });
+        // } else {
+        // }
+        this.setState({slideIndex});
     }
 
     render() {

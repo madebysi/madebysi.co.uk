@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'enzyme';
 import {MemoryRouter} from 'react-router-dom';
 import {LinkStub} from '../../../test/helpers';
-import WorkLinks from './';
+import WorkMenu from './';
 
 const props = {
     type: 'ContentfulWorkLinks',
@@ -113,17 +113,14 @@ const props = {
                 }
             }
         }
-    ],
-    page: {
-        id: 'c1jcLfnsZpIY4GWAmaoEq8S'
-    }
+    ]
 };
 
 describe('Work Links component', () => {
     it('should render', () => {
         const el = render((
             <MemoryRouter>
-                <WorkLinks
+                <WorkMenu
                     {...props}
                     LinkComponent={LinkStub}
                 />

@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import {
+    colors,
     columns,
     maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
 } from '../../styles';
-import {LinkList} from '../work-links';
-import HoverMedia from './hover-media';
-import mobile from 'usfl/platform/mobile';
-
-const isMobile = mobile();
+import WorkMenu from '../work-menu';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -26,32 +23,42 @@ const Wrapper = styled.div`
     `}
 `;
 
+const Bg = styled.div`
+    background-color: ${colors.greyLight};
+    ${'' /* background-color: red; */}
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+`;
+
 const Inner = styled.div`
-    ${'' /* border: 10px dashed purple; */}
     width: 100%;
 `;
 
 const TextHolder = styled.div`
     font-size: 30px;
     position: relative;
-    margin: ${standardMargin}%;
+    margin: 0 ${standardMargin}%;
     flex-grow: none;
+    line-height: 1.22;
+    letter-spacing: -1.2px;
 
     ${media.md`
-        // border: 10px dashed green;
-        font-size: 5vw;
-        margin: ${standardMarginMd}%;
-        margin-top: 0;
-        width: ${columns(11)}%;
+        font-size: 4.6vw;
+        margin: 0 ${standardMarginMd}%;
+        width: ${columns(12)}%;
     `}
 
     ${media.lg`
-        font-size: 80px;
+        font-size: 73.6px;
     `}
 `;
 
 const Intro = styled.div`
-    opacity: 0.4;
+    color: ${colors.grey};
     margin-bottom: 12px;
 
     ${media.md`
@@ -78,33 +85,18 @@ export default class IntroComponent extends Component {
 
         return (
             <Wrapper>
+                <Bg/>
                 <Inner>
                     <TextHolder>
                         <Intro dangerouslySetInnerHTML={{
                             __html: html
                         }}/>
-                        <LinkList
-                            intro
-                            hover={this.state.hover}
-                            hoverSlug={this.state.hoverSlug}
-                            pages={pages}
-                            onMouseOver={hoverSlug => this.setState({
-                                hover: true,
-                                hoverSlug
-                            })}
-                            onMouseOut={() => this.setState({
-                                hover: false
-                            })}
-                            LinkComponent={LinkComponent}
-                        />
                     </TextHolder>
-                    {!isMobile && (
-                        <HoverMedia
-                            hover={this.state.hover}
-                            hoverSlug={this.state.hoverSlug}
-                            pages={pages}
-                        />
-                    )}
+                    <WorkMenu
+                        intro={true}
+                        pages={pages}
+                        LinkComponent={LinkComponent}
+                    />
                 </Inner>
             </Wrapper>
         );

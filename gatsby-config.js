@@ -6,6 +6,7 @@ module.exports = {
         url: 'https://madebysi.co.uk'
     },
     plugins: [
+        'gatsby-plugin-styled-components',
         'gatsby-plugin-react-helmet',
         'gatsby-transformer-remark',
         {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Helmet from 'react-helmet';
 import components from '../components';
 import DebugData from '../components/debug-data';
@@ -21,6 +21,28 @@ const Section = styled.section`
     overflow: hidden;
 `;
 
+class MainComponent extends Component {
+    componentDidMount() {
+        this.el.style.opacity = 0;
+        window.requestAnimationFrame(() => {
+            const transition = 'all 0.8s ease';
+            this.el.style.WebkitTransition = transition;
+            this.el.style.transition = transition;
+            this.el.style.opacity = 1;
+        });
+    }
+
+    render() {
+        return (
+            <Main
+                style={{opacity: 0}}
+                innerRef={el => (this.el = el)}>
+                {this.props.children}
+            </Main>
+        );
+    }
+}
+
 export default ({
     location,
     data: {
@@ -39,7 +61,7 @@ export default ({
     const favicon = settings.favicon.file.url;
 
     return (
-        <Main>
+        <MainComponent>
             <Helmet title={title}>
                 <html lang="en" />
 
@@ -74,21 +96,21 @@ export default ({
             ) : null}
             {page.modules.map(m => {
                 const type = m.type.replace('Contentful', '');
-                const Component = components[type];
-                if (!Component) {
+                const Module = components[type];
+                if (!Module) {
                     return null;
                 }
 
                 return (
                     <Section id={m.id} data-component={type} key={type + m.id}>
-                        <Component {...m} page={page} work={work}/>
+                        <Module {...m} page={page} work={work}/>
                     </Section>
                 );
             })}
             {process.env.NODE_ENV === 'development' && (
                 <Grid show/>
             )}
-        </Main>
+        </MainComponent>
     );
 };
 
@@ -192,6 +214,9 @@ query PageQuery($id: String!) {
           id
           title
           slug
+          hoverMedia {
+            ...VideoFragment
+          }
         }
       }
     }

@@ -24,7 +24,7 @@ const Container = styled.div`
 `;
 
 const Menu = styled.nav`
-    background-color: ${({dark}) => dark ? colors.blackest : colors.white};
+    background-color: ${({dark}) => dark ? colors.blackest : colors.greyLight};
     width: 100%;
     height: 100vh;
     position: fixed;

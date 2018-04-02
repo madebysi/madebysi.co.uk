@@ -27,7 +27,7 @@
     "gatsby-source-filesystem": "1.5.27",
     "gatsby-transformer-remark": "1.7.36",
     "normalize.css": "8.0.0",
-    "nuka-carousel": "^4.0.0",
+    "nuka-carousel": "4.0.3",
     "react-helmet": "5.2.0",
     "styled-components": "2.2.1",
     "usfl": "^3.2.3"

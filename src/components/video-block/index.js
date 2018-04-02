@@ -9,9 +9,15 @@ import {
 } from '../../styles';
 
 const Wrapper = styled.div`
-    background: rgba(0, 0, 0, 0.3);
+    cursor: ${({autoLoop}) => autoLoop ? 'auto' : 'pointer'};
     position: relative;
     width: 100%;
+    background-color: ${colors.greyLight};
+    transition: background-color 0.4s ease;
+
+    &:hover {
+        background-color: ${({playing}) => playing ? colors.greyLight : colors.greyMedium};
+    }
 `;
 
 const Bg = styled.div`
@@ -31,8 +37,7 @@ const Inner = styled.div`
     `}
 `;
 
-const PlayButton = styled.button`
-    cursor: pointer;
+const PlayButton = styled.div`
     color: ${colors.white};
     font-size: 30px;
     position: absolute;
@@ -66,7 +71,10 @@ export default class VideoBlock extends Component {
         };
     }
 
-    onPlay() {
+    togglePlay() {
+        if (this.props.autoLoop) {
+            return;
+        }
         if (this.state.playing) {
             this.video.pause();
             this.setState({playing: false});
@@ -74,15 +82,6 @@ export default class VideoBlock extends Component {
             this.video.play();
             this.setState({playing: true});
         }
-    }
-
-    onPause() {
-        if (this.props.autoLoop || !this.state.playing) {
-            return;
-        }
-
-        this.video.pause();
-        this.setState({playing: false});
     }
 
     componentDidMount() {
@@ -105,7 +104,10 @@ export default class VideoBlock extends Component {
         } = this.props;
 
         return (
-            <Wrapper>
+            <Wrapper
+                autoLoop={autoLoop}
+                playing={this.state.playing}
+                onClick={() => this.togglePlay()}>
                 <Bg>
                     <Inner>
                         <Video
@@ -116,8 +118,7 @@ export default class VideoBlock extends Component {
                             muted={autoLoop}
                             autoPlay={autoLoop}
                             loop={autoLoop}
-                            playsInline
-                            onClick={() => this.onPause()}>
+                            playsInline>
                             <source
                                 src={url}
                                 type={contentType}
@@ -125,8 +126,7 @@ export default class VideoBlock extends Component {
                         </Video>
                         {!autoLoop && (
                             <PlayButton
-                                playing={this.state.playing}
-                                onClick={() => this.onPlay()}>
+                                playing={this.state.playing}>
                         play
                             </PlayButton>
                         )}
