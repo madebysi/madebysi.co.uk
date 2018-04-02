@@ -17,8 +17,6 @@ const Wrapper = styled.div`
 const Bg = styled.div`
     position: relative;
     width: 100%;
-    ${'' /* max-width: ${maxGridWidth}px; */}
-    ${'' /* margin: 0 auto; */}
 `;
 
 const Inner = styled.div`
@@ -54,7 +52,7 @@ const Video = styled.video`
         display: none !important;
     }
 `;
-// export default props => <pre>{JSON.stringify(props, null, 2)}</pre>;
+
 export default class VideoBlock extends Component {
     constructor(props) {
         super(props);
@@ -65,9 +63,13 @@ export default class VideoBlock extends Component {
     }
 
     onPlay() {
-        this.video.play();
-
-        this.setState({playing: true});
+        if (this.state.playing) {
+            this.video.pause();
+            this.setState({playing: false});
+        } else {
+            this.video.play();
+            this.setState({playing: true});
+        }
     }
 
     onPause() {
@@ -76,8 +78,14 @@ export default class VideoBlock extends Component {
         }
 
         this.video.pause();
-
         this.setState({playing: false});
+    }
+
+    componentDidMount() {
+        if (!this.props.autoLoop) {
+            this.video.play();
+            this.video.pause();
+        }
     }
 
     render() {
@@ -97,10 +105,11 @@ export default class VideoBlock extends Component {
                 <Bg>
                     <Inner>
                         <Video
-                            innerRef={video => (this.video = video)}
                             id={id}
-                            ref={el => (this.el = el)}
-                            muted
+                            innerRef={video => (this.video = video)}
+                            // controls
+                            // crossorigin="anonymous"
+                            muted={autoLoop}
                             autoPlay={autoLoop}
                             loop={autoLoop}
                             playsInline

@@ -13,6 +13,7 @@ import CloseMenuIcon from './close-menu.svg';
 import BurgerMenuIconDark from './burger-menu-dark.svg';
 import CloseMenuIconDark from './close-menu-dark.svg';
 import formatLink from '../../utils/format-link';
+import stopScroll from '../../utils/stop-scroll';
 
 const Container = styled.div`
     display: flex;
@@ -101,9 +102,6 @@ const BurgerMenuLink = styled.div`
     background-size: contain;
     display: block;
     position: relative;
-    ${'' /* position: absolute; */}
-    ${'' /* left: 25px; */}
-    ${'' /* top: 28px; */}
     width: 28px;
     height: 19px;
     text-indent: -9999em;
@@ -125,9 +123,9 @@ class MenuComponent extends Component {
     }
 
     onClickBurgerLink() {
-        this.setState({
-            menuClosed: !this.state.menuClosed
-        });
+        const menuClosed = !this.state.menuClosed;
+        this.setState({menuClosed});
+        stopScroll(!menuClosed);
     }
 
     render() {
