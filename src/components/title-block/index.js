@@ -2,24 +2,45 @@ import React from 'react';
 import styled from 'styled-components';
 import {
     colors,
-    fontRegular,
-    maxGridWidth,
+    // columns,
+    fontAlt,
+    // maxGridWidth,
     media,
     standardMargin,
-    standardMarginMd
+    standardMarginMd,
+    standardMarginTop
 } from '../../styles';
+import HeroMedia from './hero-media';
 
 const Wrapper = styled.div`
+    background-color: ${({dark}) => dark ? colors.greyLight : colors.black};
     position: relative;
     width: 100%;
-    max-width: ${maxGridWidth}px;
-    margin: 0 auto;
+    ${'' /* max-width: ${maxGridWidth}px; */}
+    ${'' /* margin: 0 auto; */}
+
+    ${'' /* height: 150vw; */}
+    height: 484px;
+
+    ${media.sm`
+        height: auto;
+    `}
 `;
 
 const Inner = styled.div`
     ${'' /* border: 10px dashed red; */}
-    padding: 0 ${standardMargin}%;
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
+    padding: 0 ${standardMargin}%;
+    margin-top: ${standardMarginTop}px;
+
+    ${media.sm`
+        top: 50%;
+        transform: translateY(-50%);
+        margin-top: 0;
+    `}
 
     ${media.md`
         padding: 0 ${standardMarginMd}%;
@@ -27,39 +48,44 @@ const Inner = styled.div`
 `;
 
 const Title = styled.h1`
-    color: ${colors.black};
-    ${fontRegular};
+    color: ${({dark}) => dark ? colors.black : colors.white};
+    ${fontAlt};
     font-size: 30px;
-    line-height: 1;
+    line-height: 1.29;
     margin: 0 0 28px;
 
-    ${media.md`
-        font-size: 48px;
+    ${media.sm`
+        font-size: 66px;
     `}
 `;
 
 const SubTitle = styled.h3`
-    color: ${colors.blue};
-    ${fontRegular};
+    color: ${({dark}) => dark ? colors.black : colors.white};
+    ${fontAlt};
     font-size: 18px;
     line-height: 1;
-    margin: 0 0 46px;
-    opacity: 0.5;
+    ${'' /* margin: 0 0 46px; */}
+    ${'' /* opacity: 0.5; */}
 
-    ${media.md`
-        font-size: 22px;
-        margin: 0 0 86px;
+    ${media.sm`
+        font-size: 18px;
+        // margin: 0 0 86px;
     `}
 `;
 
 export default ({
     title,
-    subTitle
+    subTitle,
+    dark,
+    heroMedia: {file}
 }) => (
-    <Wrapper>
+    <Wrapper dark={dark}>
+        <HeroMedia file={file}/>
         <Inner>
-            <Title>{title}</Title>
-            <SubTitle>{subTitle}</SubTitle>
+            <Title dark={dark} dangerouslySetInnerHTML={{
+                __html: title
+            }}/>
+            <SubTitle dark={dark}>{subTitle}</SubTitle>
         </Inner>
     </Wrapper>
 );

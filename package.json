@@ -29,6 +29,7 @@
     "normalize.css": "8.0.0",
     "nuka-carousel": "4.0.3",
     "react-helmet": "5.2.0",
+    "react-transition-group": "^2.3.0",
     "styled-components": "2.2.1",
     "usfl": "^3.2.3"
   },

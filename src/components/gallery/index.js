@@ -4,8 +4,8 @@ import Img from 'gatsby-image';
 import Carousel from 'nuka-carousel';
 import {
     colors,
-    fontRegular,
-    maxSiteWidth,
+    fontAlt,
+    // maxSiteWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -14,16 +14,14 @@ import arrowLeft from './arrow_left.png';
 import arrowRight from './arrow_right.png';
 
 const Wrapper = styled.div`
+    background-color: ${colors.white};
     position: relative;
     width: 100%;
-
-    ${media.md`
-    `}
 `;
 
 const ImgHolder = styled.div`
     width: 100vw;
-    max-width: ${maxSiteWidth}px;
+    ${'' /* max-width: ${maxSiteWidth}px; */}
     opacity: ${({loaded}) => loaded ? 1 : 0};
     transition: all 0.3s ease-in;
     cursor: url(${({cursor}) => cursor}), auto;
@@ -53,18 +51,18 @@ class ImgLoader extends Component {
 }
 
 const Counter = styled.div`
-    color: ${colors.black};
-    ${fontRegular};
+    color: ${colors.greyDarker};
+    ${fontAlt};
     font-size: 14px;
     line-height: 1;
     opacity: 0.5;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
     margin: ${standardMargin / 2}% ${standardMargin}%;
 
-    ${media.md`
+    ${media.sm`
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
         font-size: 16px;
         margin: ${standardMarginMd / 2}% ${standardMarginMd}%;
     `}
@@ -162,7 +160,6 @@ export default class Gallery extends Component {
             <Wrapper
                 onMouseMove={this.onMouseMove}
                 onClick={this.onClick}>
-                <Counter>{this.state.slideIndex + 1} / {this.props.images.length}</Counter>
                 <Carousel
                     {...settings}
                     slideIndex={this.state.slideIndex}
@@ -175,6 +172,7 @@ export default class Gallery extends Component {
                         />
                     ))}
                 </Carousel>
+                <Counter>{this.state.slideIndex + 1} / {this.props.images.length}</Counter>
             </Wrapper>
         );
     }

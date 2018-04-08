@@ -4,21 +4,27 @@ import {
     colors,
     columns,
     fontRegular,
-    maxGridWidth,
+    fontAlt,
+    // maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
 } from '../../styles';
 
 const Wrapper = styled.article`
+    background-color: ${colors.white};
     position: relative;
     width: 100%;
-    max-width: ${maxGridWidth}px;
-    margin: 0 auto;
+    ${'' /* max-width: ${maxGridWidth}px; */}
+    ${'' /* margin: 0 auto; */}
 `;
 
 const Inner = styled.div`
     margin: ${standardMargin}%;
+
+    ${media.sm`
+        width: 50%;
+    `}
 
     ${media.md`
         margin: ${standardMarginMd}%;
@@ -28,20 +34,21 @@ const Inner = styled.div`
 
 const Heading = styled.h2`
     color: ${colors.black};
-    ${fontRegular};
-    font-size: 16px;
+    ${fontAlt};
+    font-size: 14px;
     line-height: 1;
     margin: 0 0 28px;
 
     ${media.md`
-        font-size: 16px;
+        color: ${colors.grey};
+        font-size: 18px;
     `}
 `;
 
 const TextHolder = styled.div`
     color: ${colors.black};
     ${fontRegular};
-    font-size: 22px;
+    font-size: 18px;
     line-height: 1.38;
     margin: 0;
 
@@ -51,7 +58,7 @@ const TextHolder = styled.div`
 `;
 
 const SecondaryTextHolder = TextHolder.extend`
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.8;
     margin: 40px 0 0;
 

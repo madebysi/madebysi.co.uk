@@ -4,7 +4,7 @@ const fs = require('fs');
 const sitemap = require('sitemap');
 
 exports.createPages = ({graphql, boundActionCreators}) => {
-    const {createPage} = boundActionCreators;
+    const {createLayout, createPage} = boundActionCreators;
 
     return new Promise(resolve => {
         graphql(`
@@ -14,6 +14,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
                   node {
                     id
                     slug
+                    headerTextColor
                   }
                 }
               }
@@ -23,12 +24,33 @@ exports.createPages = ({graphql, boundActionCreators}) => {
             .then(data => {
                 const pages = data.pages.edges.map(edge => edge.node);
 
+                createLayout({
+                    component: path.resolve('./src/templates-layout/index.js'),
+                    id: 'layout_dark',
+                    context: {
+                        dark: true
+                    }
+                });
+
+                createLayout({
+                    component: path.resolve('./src/templates-layout/index.js'),
+                    id: 'layout_light',
+                    context: {
+                        dark: false
+                    }
+                });
+
+                return pages;
+            })
+            .then(pages => {
+
                 pages.map(page => {
                     console.log('\n=> createPage', `/${page.slug || ''}`);
                     // console.log('=>', JSON.stringify(page, null, 2));
                     return createPage({
                         path: `/${page.slug || ''}/`.replace('//', '/'),
                         component: path.resolve('./src/templates/index.js'),
+                        layout: `layout_${page.headerTextColor ? 'light' : 'dark'}`,
                         context: {
                             id: page.id
                         }

@@ -4,7 +4,7 @@ import {
     column,
     columnGutter,
     layoutWidthMd,
-    maxGridWidth,
+    // maxGridWidth,
     media,
     numColumns,
     siteMarginMd,
@@ -23,7 +23,7 @@ const Grid = styled.div`
     width: 100%;
     height: 100vh;
     left: 50%;
-    max-width: ${maxGridWidth}px;
+    ${'' /* max-width: ${maxGridWidth}px; */}
     transform: translate(-50%, 0px);
     z-index: 200;
     pointer-events: none;

@@ -39,7 +39,8 @@ const Video = styled.video`
     height: 100%;
     object-fit: cover;
 
-    &::-webkit-media-controls {
+    &::-webkit-media-controls,
+    &::-webkit-media-controls-start-playback-button {
         display: none !important;
     }
 `;

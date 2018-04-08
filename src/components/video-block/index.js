@@ -15,9 +15,22 @@ const Wrapper = styled.div`
     background-color: ${colors.greyLight};
     transition: background-color 0.4s ease;
 
-    &:hover {
-        background-color: ${({playing}) => playing ? colors.greyLight : colors.greyMedium};
+    &::after {
+        background-color: ${colors.black};
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.2s ease;
     }
+
+    &:hover::after {
+        opacity: ${({playing}) => playing ? 0 : 0.2};
+    }
+
 `;
 
 const Bg = styled.div`
@@ -32,8 +45,8 @@ const Inner = styled.div`
 
     ${media.md`
         padding: ${standardMarginMd}%;
-        max-width: calc(${maxGridWidth}px + ${standardMarginMd * 2}%);
-        margin: 0 auto;
+        // max-width: calc(${maxGridWidth}px + ${standardMarginMd * 2}%);
+        // margin: 0 auto;
     `}
 `;
 
@@ -86,8 +99,9 @@ export default class VideoBlock extends Component {
 
     componentDidMount() {
         if (!this.props.autoLoop) {
-            this.video.play();
-            this.video.pause();
+            try {
+                this.video.play().then(() => this.video.pause());
+            } catch (e) {}
         }
     }
 

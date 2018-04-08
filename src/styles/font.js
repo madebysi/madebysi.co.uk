@@ -1,8 +1,14 @@
 import {css} from 'styled-components';
 
-const font = 'GT America Light';
+const fontA = 'GT America Light';
+const fontB = 'Kepler Std';
 
 export const fontRegular = css`
-  font-family: ${font}, sans-serif;
+  font-family: ${fontA}, sans-serif;
   font-weight: 200;
+`;
+
+export const fontAlt = css`
+  font-family: ${fontB}, serif;
+  font-weight: 400;
 `;

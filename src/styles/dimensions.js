@@ -10,6 +10,8 @@ export const numColumns = 16;
 export const column = 63;
 export const columnGutter = 16;
 
+export const standardMarginTop = 136;
+
 export const standardMargin = roundTo(siteMargin / layoutWidth * 100);
 export const standardMarginMd = roundTo((siteMarginMd + column + columnGutter) / layoutWidthMd * 100);
 
@@ -23,7 +25,7 @@ export const columns = (count, add = 0) => {
     return add + roundTo((column * count + columnGutter * (count - 1)) / layoutWidthMd, 2) * 100;
 };
 
-export const maxSiteWidth = 1920;
+// export const maxSiteWidth = 1920;
 export const maxGridWidth = 1600;
 
 export const toPercent = px => roundTo(px / layoutWidth * 100, 2);

@@ -4,8 +4,9 @@ import Link from 'gatsby-link';
 import {
     colors,
     columns,
+    fontAlt,
     LinkHoverIntro,
-    maxGridWidth,
+    // maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -18,33 +19,42 @@ const isMobile = mobile();
 
 const Wrapper = styled.div`
     width: 100%;
-    max-width: ${maxGridWidth}px;
-    margin: 0 auto;
+    ${'' /* max-width: ${maxGridWidth}px; */}
+    ${'' /* margin: 0 auto; */}
 `;
 
 const TextHolder = styled.div`
+    ${fontAlt}
     font-size: 30px;
     margin: ${standardMargin}%;
     flex-grow: none;
     line-height: 1.22;
-    letter-spacing: -1.2px;
+    ${'' /* letter-spacing: -1.2px; */}
+    letter-spacing: 0px;
+
+    ${media.sm`
+        font-size: 5.4vw;
+        width: 70%;
+        margin-bottom: ${standardMargin * 2}%;
+        margin-top: 0;
+    `}
 
     ${media.md`
-        font-size: 4.6vw;
+        font-size: 4.7vw;
         margin: ${standardMarginMd}%;
         margin-top: 0;
         width: ${columns(12)}%;
     `}
 
-    ${media.lg`
+    ${'' /* ${media.lg`
         font-size: 73.6px;
-    `}
+    `} */}
 `;
 
 const Links = styled.div`
     position: relative;
 
-    ${media.md`
+    ${media.sm`
         z-index: 20;
     `}
 `;
@@ -64,7 +74,7 @@ const LinkItem = styled.span`
         color 0.1s linear;
     margin-bottom: 10px;
 
-    ${media.md`
+    ${media.sm`
         display: inline;
         margin-bottom: 0;
         &:after {

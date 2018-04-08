@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {
     colors,
     media,
+    standardMargin,
     standardMarginMd
 } from '../../styles';
 import WorkMenu from '../work-menu';
@@ -28,6 +29,10 @@ const Wrapper = styled.div`
 
 const Inner = styled.div`
     width: 100%;
+
+    ${media.sm`
+        padding-top: ${standardMargin}%;
+    `}
 
     ${media.md`
         position: absolute;

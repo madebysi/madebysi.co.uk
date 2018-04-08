@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import {withRouter} from 'react-router';
 import styled, {css} from 'styled-components';
 import {
-    fontRegular,
+    fontAlt,
     media,
     colors,
     standardMargin
@@ -24,7 +24,7 @@ const Container = styled.div`
 `;
 
 const Menu = styled.nav`
-    background-color: ${({dark}) => dark ? colors.blackest : colors.greyLight};
+    background-color: ${({dark}) => dark ? colors.greyLight : colors.black};
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -36,7 +36,7 @@ const Menu = styled.nav`
     margin-top: 108px;
     flex-grow: 1;
 
-    ${media.md`
+    ${media.sm`
         position: static;
         margin-top: 0;
         padding: 0;
@@ -53,7 +53,7 @@ const Links = styled.ul`
     flex-direction: column;
     margin-top: 50px;
 
-    ${media.md`
+    ${media.sm`
         margin-top: 0;
         flex-direction: row;
     `}
@@ -63,7 +63,7 @@ const LinkItem = styled.li`
     margin-bottom: 26px;
     text-align: left;
 
-    ${media.md`
+    ${media.sm`
         margin-bottom: 0;
         margin-right: 28px;
         text-align: left;
@@ -71,7 +71,7 @@ const LinkItem = styled.li`
 `;
 
 const MenuLink = styled(Link)`
-    ${fontRegular};
+    ${fontAlt};
     font-size: 20px;
     opacity: 0.4;
     transition: opacity 0.4s ease;
@@ -80,22 +80,22 @@ const MenuLink = styled(Link)`
         opacity: 1;
     }
 
-    ${media.md`
+    ${media.sm`
         font-size: 20px;
     `}
 `;
 
 const LinkLabel = styled.span`
-    color: ${({dark}) => dark ? colors.white : colors.black};
+    color: ${({dark}) => dark ? colors.black : colors.white};
     transition: color 0.4s ease;
 `;
 
 const BurgerMenuLink = styled.div`
     ${({dark}) => dark && css`
-        background-image: url(${({menuClosed}) => menuClosed ? BurgerMenuIconDark : CloseMenuIconDark});
+        background-image: url(${({menuClosed}) => menuClosed ? BurgerMenuIcon : CloseMenuIcon});
     `}
     ${({dark}) => !dark && css`
-        background-image: url(${({menuClosed}) => menuClosed ? BurgerMenuIcon : CloseMenuIcon});
+        background-image: url(${({menuClosed}) => menuClosed ? BurgerMenuIconDark : CloseMenuIconDark});
     `}
     background-position: center;
     background-repeat: no-repeat;
@@ -106,7 +106,7 @@ const BurgerMenuLink = styled.div`
     height: 19px;
     text-indent: -9999em;
 
-    ${media.md`
+    ${media.sm`
         display: none;
     `}
 `;

@@ -2,19 +2,19 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import Header from '../components/header';
 import {
-    colors,
-    maxSiteWidth
+    colors
+    // maxSiteWidth
 } from '../styles';
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: ${colors.white};
+    background-color: ${colors.blackest};
     transition: background-color 0.2s ease;
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-    max-width: ${maxSiteWidth}px;
+    ${'' /* max-width: ${maxSiteWidth}px; */}
     margin: 0 auto;
 `;
 
@@ -28,12 +28,13 @@ export default class Layouts extends Component {
             },
             data: {
                 menu
+            },
+            layoutContext: {
+                dark
             }
         } = this.props;
 
-        console.log('page', pathname, pathname.replace(/\//g, ''));
-
-        const dark = pathname.replace(/\//g, '') === 'about';
+        console.log('page', pathname, pathname.replace(/\//g, ''), dark ? 'dark' : 'light');
 
         return (
             <Wrapper>

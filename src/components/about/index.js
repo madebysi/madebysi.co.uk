@@ -4,23 +4,24 @@ import {
     colors,
     columns,
     fontRegular,
-    LinkHoverIntro,
-    maxGridWidth,
+    LinkHoverIntroReg,
+    // maxGridWidth,
     media,
     standardMargin,
-    standardMarginMd
+    standardMarginMd,
+    standardMarginTop
 } from '../../styles';
 
 
 const Wrapper = styled.div`
     position: relative;
     width: 100%;
-    max-width: ${maxGridWidth}px;
-    margin: 0 auto;
+    ${'' /* max-width: ${maxGridWidth}px; */}
+    ${'' /* margin: 0 auto; */}
 `;
 
 const Bg = styled.div`
-    background-color: #000000;
+    background-color: ${colors.black};
     ${'' /* background-color: blue; */}
     position: fixed;
     left: 0;
@@ -33,13 +34,18 @@ const Bg = styled.div`
 const Inner = styled.div`
     ${'' /* border: 10px dashed green; */}
     padding: 0 ${standardMargin}%;
+    margin-top: ${standardMarginTop}px;
     width: 100%;
     position: relative;
     z-index: 1;
 
+    ${media.sm`
+        margin-top: ${200}px;
+    `}
+
     ${media.md`
         padding: 0;
-        margin: 0 ${standardMarginMd}%;
+        margin: 250px ${standardMarginMd}%;
         width: ${columns(12)}%;
     `}
 `;
@@ -51,13 +57,17 @@ const Text = styled.div`
     font-size: 30px;
     line-height: 1.2;
 
+    ${media.sm`
+        font-size: 5.3vw;
+    `}
+
     ${media.md`
-        font-size: 60px;
+        font-size: 4.6vw;
     `}
 
     a {
         color: ${colors.greyDark};
-        ${LinkHoverIntro}
+        ${LinkHoverIntroReg}
 
         &:hover {
             color: ${colors.white};

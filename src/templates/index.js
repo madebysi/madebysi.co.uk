@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import components from '../components';
 import DebugData from '../components/debug-data';
@@ -21,28 +21,6 @@ const Section = styled.section`
     overflow: hidden;
 `;
 
-class MainComponent extends Component {
-    componentDidMount() {
-        this.el.style.opacity = 0;
-        window.requestAnimationFrame(() => {
-            const transition = 'all 0.8s ease';
-            this.el.style.WebkitTransition = transition;
-            this.el.style.transition = transition;
-            this.el.style.opacity = 1;
-        });
-    }
-
-    render() {
-        return (
-            <Main
-                style={{opacity: 0}}
-                innerRef={el => (this.el = el)}>
-                {this.props.children}
-            </Main>
-        );
-    }
-}
-
 export default ({
     location,
     data: {
@@ -50,9 +28,9 @@ export default ({
             siteMetadata
         },
         settings,
-        work,
         page
-    }
+    },
+    transition
 }) => {
     const siteURL = siteMetadata.url;
     const title = page.title ? `${settings.title} / ${page.title}` : settings.title;
@@ -61,7 +39,7 @@ export default ({
     const favicon = settings.favicon.file.url;
 
     return (
-        <MainComponent>
+        <Main style={transition && transition.style}>
             <Helmet title={title}>
                 <html lang="en" />
 
@@ -84,6 +62,7 @@ export default ({
                 <link rel="apple-touch-icon" sizes="180x180" href={`${favicon}?w=180`}/>
                 <link rel="icon" type="image/png" sizes="192x192" href={`${favicon}?w=192`}/>
                 <link rel="icon" type="image/png" sizes="32x32" href={`${favicon}?w=32`}/>
+                <link rel="stylesheet" href="https://use.typekit.net/iox6avl.css"/>
             </Helmet>
             {process.env.NODE_ENV === 'development' ? (
                 <DebugData
@@ -103,14 +82,14 @@ export default ({
 
                 return (
                     <Section id={m.id} data-component={type} key={type + m.id}>
-                        <Module {...m} page={page} work={work}/>
+                        <Module {...m} page={page} dark={!page.headerTextColor}/>
                     </Section>
                 );
             })}
             {process.env.NODE_ENV === 'development' && (
                 <Grid show/>
             )}
-        </MainComponent>
+        </Main>
     );
 };
 
@@ -136,6 +115,7 @@ query PageQuery($id: String!) {
     id
     slug
     title
+    headerTextColor
     modules {
       type: __typename
       ... on ContentfulIntro {
@@ -168,6 +148,9 @@ query PageQuery($id: String!) {
         id
         title
         subTitle
+        heroMedia {
+          ...VideoFragment
+        }
       }
       ... on ContentfulImageBlock {
         id

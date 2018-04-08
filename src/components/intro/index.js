@@ -3,22 +3,24 @@ import styled from 'styled-components';
 import {
     colors,
     columns,
-    maxGridWidth,
+    fontAlt,
+    // maxGridWidth,
     media,
     standardMargin,
-    standardMarginMd
+    standardMarginMd,
+    standardMarginTop
 } from '../../styles';
 import WorkMenu from '../work-menu';
 
 const Wrapper = styled.div`
     width: 100%;
-    max-width: ${maxGridWidth}px;
-    margin: 0 auto;
+    ${'' /* max-width: ${maxGridWidth}px; */}
+    ${'' /* margin: 0 auto; */}
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 
-    ${media.md`
+    ${media.sm`
         justify-content: flex-end;
     `}
 `;
@@ -36,25 +38,37 @@ const Bg = styled.div`
 
 const Inner = styled.div`
     width: 100%;
+    margin-top: ${standardMarginTop}px;
+
+    ${media.sm`
+        margin-top: 0;
+    `}
 `;
 
 const TextHolder = styled.div`
+    ${fontAlt}
     font-size: 30px;
     position: relative;
     margin: 0 ${standardMargin}%;
     flex-grow: none;
     line-height: 1.22;
-    letter-spacing: -1.2px;
+    ${'' /* letter-spacing: -1.2px; */}
+    letter-spacing: 0px;
+
+    ${media.sm`
+        font-size: 5.4vw;
+        width: 60%;
+    `}
 
     ${media.md`
-        font-size: 4.6vw;
+        font-size: 4.7vw;
         margin: 0 ${standardMarginMd}%;
-        width: ${columns(12)}%;
+        width: ${columns(8)}%;
     `}
 
-    ${media.lg`
+    ${'' /* ${media.lg`
         font-size: 73.6px;
-    `}
+    `} */}
 `;
 
 const Intro = styled.div`
