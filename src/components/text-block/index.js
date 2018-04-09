@@ -5,7 +5,6 @@ import {
     columns,
     fontRegular,
     fontAlt,
-    // maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -15,8 +14,6 @@ const Wrapper = styled.article`
     background-color: ${colors.white};
     position: relative;
     width: 100%;
-    ${'' /* max-width: ${maxGridWidth}px; */}
-    ${'' /* margin: 0 auto; */}
 `;
 
 const Inner = styled.div`

@@ -16,10 +16,6 @@ const Wrapper = styled.div`
     background-color: ${({dark}) => dark ? colors.greyLight : colors.black};
     position: relative;
     width: 100%;
-    ${'' /* max-width: ${maxGridWidth}px; */}
-    ${'' /* margin: 0 auto; */}
-
-    ${'' /* height: 150vw; */}
     height: 484px;
 
     ${media.sm`
@@ -28,7 +24,6 @@ const Wrapper = styled.div`
 `;
 
 const Inner = styled.div`
-    ${'' /* border: 10px dashed red; */}
     position: absolute;
     left: 0;
     top: 0;
@@ -64,8 +59,6 @@ const SubTitle = styled.h3`
     ${fontAlt};
     font-size: 18px;
     line-height: 1;
-    ${'' /* margin: 0 0 46px; */}
-    ${'' /* opacity: 0.5; */}
 
     ${media.sm`
         font-size: 18px;

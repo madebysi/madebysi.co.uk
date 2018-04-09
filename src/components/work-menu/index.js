@@ -6,7 +6,6 @@ import {
     columns,
     fontAlt,
     LinkHoverIntro,
-    // maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -19,8 +18,6 @@ const isMobile = mobile();
 
 const Wrapper = styled.div`
     width: 100%;
-    ${'' /* max-width: ${maxGridWidth}px; */}
-    ${'' /* margin: 0 auto; */}
 `;
 
 const TextHolder = styled.div`
@@ -29,7 +26,6 @@ const TextHolder = styled.div`
     margin: ${standardMargin}%;
     flex-grow: none;
     line-height: 1.22;
-    ${'' /* letter-spacing: -1.2px; */}
     letter-spacing: 0px;
 
     ${media.sm`
@@ -45,10 +41,6 @@ const TextHolder = styled.div`
         margin-top: 0;
         width: ${columns(12)}%;
     `}
-
-    ${'' /* ${media.lg`
-        font-size: 73.6px;
-    `} */}
 `;
 
 const Links = styled.div`
@@ -113,10 +105,16 @@ export default class IntroComponent extends Component {
                                     hover={this.state.hover}
                                     active={this.state.hoverSlug === slug}>
                                     <LinkComponent
-                                        onMouseOver={() => this.setState({
-                                            hover: true,
-                                            hoverSlug: slug
-                                        })}
+                                        onMouseOver={() => {
+                                            if (window.innerWidth < 480) {
+                                                return;
+                                            }
+                                            this.setState({
+                                                hover: true,
+                                                hoverSlug: slug
+                                            });
+                                        }
+                                        }
                                         onMouseOut={() => this.setState({
                                             hover: false
                                         })}

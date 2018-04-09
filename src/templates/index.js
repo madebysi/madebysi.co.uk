@@ -13,7 +13,6 @@ const Main = styled.main`
 `;
 
 const Section = styled.section`
-    ${'' /* border: 10px dashed red; */}
     display: flex;
     flex-direction: column;
     width: 100%;

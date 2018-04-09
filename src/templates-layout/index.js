@@ -9,7 +9,7 @@ import {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: ${colors.blackest};
+    background-color: ${colors.black};
     transition: background-color 0.2s ease;
     overflow-x: hidden;
     width: 100%;
@@ -23,9 +23,6 @@ export default class Layouts extends Component {
 
         const {
             children,
-            location: {
-                pathname
-            },
             data: {
                 menu
             },
@@ -34,11 +31,8 @@ export default class Layouts extends Component {
             }
         } = this.props;
 
-        console.log('page', pathname, pathname.replace(/\//g, ''), dark ? 'dark' : 'light');
-
         return (
             <Wrapper>
-                {/* <pre>{JSON.stringify(menu, null, 2)}</pre> */}
                 <Header
                     {...menu}
                     dark={dark}

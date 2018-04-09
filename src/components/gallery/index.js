@@ -5,7 +5,6 @@ import Carousel from 'nuka-carousel';
 import {
     colors,
     fontAlt,
-    // maxSiteWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -21,7 +20,6 @@ const Wrapper = styled.div`
 
 const ImgHolder = styled.div`
     width: 100vw;
-    ${'' /* max-width: ${maxSiteWidth}px; */}
     opacity: ${({loaded}) => loaded ? 1 : 0};
     transition: all 0.3s ease-in;
     cursor: url(${({cursor}) => cursor}), auto;
@@ -99,14 +97,10 @@ export default class Gallery extends Component {
         const pos = event.clientX / window.innerWidth;
         let direction = 0;
         let cursor = 'auto';
-        // const {slideIndex} = this.state;
-        // const last = this.props.images.length - 1;
-        // if (pos > 0.6 && slideIndex < last) {
         if (pos > 0.6) {
             direction = 1;
             cursor = arrowRight;
         }
-        // if (pos < 0.4 && slideIndex > 0) {
         if (pos < 0.4) {
             direction = -1;
             cursor = arrowLeft;
@@ -130,28 +124,11 @@ export default class Gallery extends Component {
             if (slideIndex < 0) {
                 slideIndex = last;
             }
-            // if (slideIndex < 0 || slideIndex > last) {
-            //     this.setState({
-            //         direction: 0,
-            //         cursor: 'auto'
-            //     });
-            // } else {
-            //     this.setState({slideIndex});
-            // }
             this.setState({slideIndex});
         }
     }
 
     afterSlide(slideIndex) {
-        // const last = this.props.images.length - 1;
-        // if (slideIndex === 0 || slideIndex === last) {
-        //     this.setState({
-        //         direction: 0,
-        //         cursor: 'auto',
-        //         slideIndex
-        //     });
-        // } else {
-        // }
         this.setState({slideIndex});
     }
 

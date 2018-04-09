@@ -3,7 +3,7 @@ import {Transition} from 'react-transition-group';
 import createHistory from 'history/createBrowserHistory';
 import getTransitionStyle from './src/utils/get-transition-style';
 
-const timeout = 250;
+const timeout = 350;
 const historyExitingEventType = 'history::exiting';
 
 const getUserConfirmation = (pathname, callback) => {

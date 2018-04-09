@@ -6,7 +6,6 @@ import {
 } from '../../styles';
 
 const Wrapper = styled.div`
-    ${'' /* border: 10px dashed green; */}
     position: relative;
     width: 100%;
 `;

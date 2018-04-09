@@ -110,8 +110,8 @@ injectGlobal`
     }
 
     body {
-        background-color: ${colors.white};
-        color: ${colors.blue};
+        background-color: ${colors.black};
+        color: ${colors.black};
         ${fontRegular};
         height: 100%;
         line-height: 1.38;

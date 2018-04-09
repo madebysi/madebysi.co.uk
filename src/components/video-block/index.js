@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import {
     colors,
-    maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -28,7 +27,9 @@ const Wrapper = styled.div`
     }
 
     &:hover::after {
-        opacity: ${({playing}) => playing ? 0 : 0.2};
+        ${media.sm`
+            opacity: ${({playing}) => playing ? 0 : 0.2};
+        `}
     }
 
 `;
@@ -45,8 +46,6 @@ const Inner = styled.div`
 
     ${media.md`
         padding: ${standardMarginMd}%;
-        // max-width: calc(${maxGridWidth}px + ${standardMarginMd * 2}%);
-        // margin: 0 auto;
     `}
 `;
 
@@ -127,8 +126,6 @@ export default class VideoBlock extends Component {
                         <Video
                             id={id}
                             innerRef={video => (this.video = video)}
-                            // controls
-                            // crossorigin="anonymous"
                             muted={autoLoop}
                             autoPlay={autoLoop}
                             loop={autoLoop}

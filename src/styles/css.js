@@ -1,9 +1,10 @@
 import {css} from 'styled-components';
 import {colors} from './colors';
+import {media} from './media';
 
 export const LinkHoverIntro = css`
     background-image: linear-gradient(${colors.black}, ${colors.black});
-    background-position: 50% 0.9em;
+    background-position: 50% 0.85em;
     background-repeat: no-repeat;
     background-size: 100% 1px;
     margin-bottom: -0.6em;
@@ -15,8 +16,10 @@ export const LinkHoverIntro = css`
 
     &:hover,
     &.active {
-        color: ${colors.white};
-        background-image: linear-gradient(${colors.white}, ${colors.white});
+        ${media.sm`
+            color: ${colors.white};
+            background-image: linear-gradient(${colors.white}, ${colors.white});
+        `}
     }
 `;
 

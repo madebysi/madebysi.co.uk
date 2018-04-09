@@ -5,7 +5,6 @@ import {
     columns,
     fontRegular,
     LinkHoverIntroReg,
-    // maxGridWidth,
     media,
     standardMargin,
     standardMarginMd,
@@ -16,13 +15,10 @@ import {
 const Wrapper = styled.div`
     position: relative;
     width: 100%;
-    ${'' /* max-width: ${maxGridWidth}px; */}
-    ${'' /* margin: 0 auto; */}
 `;
 
 const Bg = styled.div`
     background-color: ${colors.black};
-    ${'' /* background-color: blue; */}
     position: fixed;
     left: 0;
     top: 0;
@@ -32,7 +28,6 @@ const Bg = styled.div`
 `;
 
 const Inner = styled.div`
-    ${'' /* border: 10px dashed green; */}
     padding: 0 ${standardMargin}%;
     margin-top: ${standardMarginTop}px;
     width: 100%;
@@ -68,10 +63,12 @@ const Text = styled.div`
     a {
         color: ${colors.greyDark};
         ${LinkHoverIntroReg}
+    }
 
-        &:hover {
+    a:hover {
+        ${media.md`
             color: ${colors.white};
-        }
+        `}
     }
 
     p {

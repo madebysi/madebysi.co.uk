@@ -4,7 +4,6 @@ import {
     colors,
     columns,
     fontAlt,
-    // maxGridWidth,
     media,
     standardMargin,
     standardMarginMd,
@@ -14,8 +13,6 @@ import WorkMenu from '../work-menu';
 
 const Wrapper = styled.div`
     width: 100%;
-    ${'' /* max-width: ${maxGridWidth}px; */}
-    ${'' /* margin: 0 auto; */}
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -27,7 +24,6 @@ const Wrapper = styled.div`
 
 const Bg = styled.div`
     background-color: ${colors.greyLight};
-    ${'' /* background-color: red; */}
     position: fixed;
     left: 0;
     top: 0;
@@ -65,10 +61,6 @@ const TextHolder = styled.div`
         margin: 0 ${standardMarginMd}%;
         width: ${columns(8)}%;
     `}
-
-    ${'' /* ${media.lg`
-        font-size: 73.6px;
-    `} */}
 `;
 
 const Intro = styled.div`

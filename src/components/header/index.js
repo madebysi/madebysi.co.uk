@@ -1,28 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import HeaderLogo from '../header-logo';
 import Menu from '../menu';
 import {
-    // colors,
     media,
-    // maxGridWidth,
     standardMargin,
     standardMarginMd
 } from '../../styles';
 
 const Header = styled.header`
-    ${'' /* border: 10px dashed red; */}
-    ${'' /* background-color: ${({dark}) => dark ? colors.blackest : colors.greyLight}; */}
-    ${'' /* position: relative; */}
     position: absolute;
     width: 100%;
     height: 153px;
-    ${'' /* max-width: ${maxGridWidth}px; */}
-    ${'' /* margin: 0 auto; */}
-    ${'' /* left: 0;
-    top: 0; */}
-    ${'' /* background: ${({isScrolled}) => isScrolled ? colors.black : 'transparent'}; */}
-    ${'' /* transition: background 0.3s ease; */}
 `;
 
 const Inner = styled.div`
@@ -39,62 +28,24 @@ const Inner = styled.div`
     `}
 `;
 
-export default class HeaderComponent extends Component {
-    constructor(props) {
-        super(props);
-
-        // this.onScroll = this.onScroll.bind(this);
-
-        this.state = {
-            isScrolled: false
-        };
-    }
-
-    // isScrolled() {
-    //     if (typeof window !== 'undefined') {
-    //         return (window.pageYOffset || document.documentElement.scrollTop) > 0;
-    //     }
-    //     return false;
-    // }
-    //
-    // onScroll() {
-    //     if (this.isScrolled() !== this.state.isScrolled) {
-    //         this.setState({
-    //             isScrolled: this.isScrolled()
-    //         });
-    //     }
-    // }
-    //
-    // componentDidMount() {
-    //     if (typeof window !== 'undefined') {
-    //         window.addEventListener('scroll', this.onScroll);
-    //     }
-    // }
-
-    render() {
-        const {
-            dark,
-            links,
-            buttons,
-            socials
-        } = this.props;
-
-        return (
-            <Header
-                isScrolled={this.state.isScrolled}>
-                <Inner>
-                    <Menu
-                        dark={dark}
-                        links={links}
-                        buttons={buttons}
-                        socials={socials}
-                    />
-                    <HeaderLogo
-                        dark={dark}
-                        to={'/'}
-                    />
-                </Inner>
-            </Header>
-        );
-    }
-}
+export default ({
+    dark,
+    links,
+    buttons,
+    socials
+}) => (
+    <Header>
+        <Inner>
+            <Menu
+                dark={dark}
+                links={links}
+                buttons={buttons}
+                socials={socials}
+            />
+            <HeaderLogo
+                dark={dark}
+                to={'/'}
+            />
+        </Inner>
+    </Header>
+);

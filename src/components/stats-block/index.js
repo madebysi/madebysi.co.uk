@@ -4,7 +4,6 @@ import {
     colors,
     fontRegular,
     fontAlt,
-    // maxGridWidth,
     media,
     standardMargin,
     standardMarginMd
@@ -14,8 +13,6 @@ const Wrapper = styled.article`
     background-color: ${colors.white};
     position: relative;
     width: 100%;
-    ${'' /* max-width: ${maxGridWidth}px; */}
-    ${'' /* margin: 0 auto; */}
 `;
 
 const Inner = styled.div`
@@ -59,7 +56,7 @@ const StatsList = styled.ul`
 
 const StatsItem = styled.li`
 `;
-// export default props => <pre>{JSON.stringify(props, null, 2)}</pre>;
+
 export default ({
     stats
 }) => (
