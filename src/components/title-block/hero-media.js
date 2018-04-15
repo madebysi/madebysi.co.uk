@@ -38,12 +38,8 @@ const Video = styled.video`
 `;
 
 class ImgLoader extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            loaded: false
-        };
+    state = {
+        loaded: false
     }
 
     render() {
@@ -65,12 +61,8 @@ class ImgLoader extends Component {
 }
 
 class VideoLoader extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            loaded: false
-        };
+    state = {
+        loaded: false
     }
 
     render() {

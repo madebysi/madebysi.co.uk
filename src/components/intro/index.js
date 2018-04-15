@@ -57,6 +57,7 @@ const TextHolder = styled.div`
     ${media.md`
         font-size: 4.7vw;
         margin: 0 ${standardMarginMd}%;
+        width: 60%;
     `}
 `;
 

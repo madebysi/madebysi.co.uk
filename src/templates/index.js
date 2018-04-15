@@ -10,6 +10,7 @@ const Main = styled.main`
     flex-direction: column;
     width: 100%;
     flex-grow: 1;
+    opacity: 0;
 `;
 
 const Section = styled.section`

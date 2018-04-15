@@ -16,6 +16,7 @@ const Img = styled.img`
 
 const ImgHolder = styled.div`
     width: 100vw;
+    height: ${({aspectRatio}) => 100 / aspectRatio}vw;
     opacity: ${({loaded}) => loaded ? 1 : 0};
     transition: opacity 0.3s ease-in;
 
@@ -37,14 +38,21 @@ class ImgLoader extends Component {
             image: {
                 title,
                 sizes: {
+                    aspectRatio,
                     src,
                     srcSet
                 }
             }
         } = this.props;
 
+        console.log('this.props', this.props);
+
+        console.log('->', 100 / aspectRatio);
+
         return (
-            <ImgHolder loaded={this.state.loaded}>
+            <ImgHolder
+                aspectRatio={aspectRatio}
+                loaded={this.state.loaded}>
                 <Img
                     alt={title}
                     src={src}

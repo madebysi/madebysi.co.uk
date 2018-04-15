@@ -117,7 +117,9 @@ export default class Gallery extends Component {
                     slideIndex={this.state.slideIndex}
                     afterSlide={slideIndex => this.afterSlide(slideIndex)}>
                     {this.props.images.map(image => (
-                        <ImgHolder key={image.id}>
+                        <ImgHolder
+                            key={image.id}
+                            cursor={this.state.cursor}>
                             <ImageBlock
                                 image={image}
                             />

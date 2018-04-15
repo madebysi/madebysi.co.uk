@@ -38,7 +38,7 @@ const Heading = styled.h2`
 
     ${media.md`
         color: ${colors.grey};
-        font-size: 18px;
+        font-size: 16px;
     `}
 `;
 
