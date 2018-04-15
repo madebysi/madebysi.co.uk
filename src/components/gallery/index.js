@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import Carousel from 'nuka-carousel';
 import {
     colors,
@@ -11,6 +10,7 @@ import {
 } from '../../styles';
 import arrowLeft from './arrow_left.png';
 import arrowRight from './arrow_right.png';
+import ImageBlock from '../image-block';
 
 const Wrapper = styled.div`
     background-color: ${colors.white};
@@ -20,36 +20,11 @@ const Wrapper = styled.div`
 
 const ImgHolder = styled.div`
     width: 100vw;
-    opacity: ${({loaded}) => loaded ? 1 : 0};
-    transition: all 0.3s ease-in;
     cursor: url(${({cursor}) => cursor}), auto;
 `;
 
-class ImgLoader extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            loaded: false
-        };
-    }
-
-    render() {
-        return (
-            <ImgHolder cursor={this.props.cursor} loaded={this.state.loaded}>
-                <Img
-                    sizes={this.props.sizes}
-                    onLoad={() => this.setState({
-                        loaded: true
-                    })}
-                />
-            </ImgHolder>
-        );
-    }
-}
-
 const Counter = styled.div`
-    color: ${colors.greyDarker};
+    color: ${colors.black};
     ${fontAlt};
     font-size: 14px;
     line-height: 1;
@@ -141,12 +116,12 @@ export default class Gallery extends Component {
                     {...settings}
                     slideIndex={this.state.slideIndex}
                     afterSlide={slideIndex => this.afterSlide(slideIndex)}>
-                    {this.props.images.map(({id, sizes}) => (
-                        <ImgLoader
-                            key={id}
-                            cursor={this.state.cursor}
-                            sizes={sizes}
-                        />
+                    {this.props.images.map(image => (
+                        <ImgHolder key={image.id}>
+                            <ImageBlock
+                                image={image}
+                            />
+                        </ImgHolder>
                     ))}
                 </Carousel>
                 <Counter>{this.state.slideIndex + 1} / {this.props.images.length}</Counter>

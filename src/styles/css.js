@@ -4,7 +4,7 @@ import {media} from './media';
 
 export const LinkHoverIntro = css`
     background-image: linear-gradient(${colors.black}, ${colors.black});
-    background-position: 50% 0.85em;
+    background-position: 50% 1.05em;
     background-repeat: no-repeat;
     background-size: 100% 1px;
     margin-bottom: -0.6em;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {
     colors,
     columns,
+    fontAlt,
     fontRegular,
     LinkHoverIntroReg,
     media,
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 const Bg = styled.div`
-    background-color: ${colors.black};
+    background-color: ${colors.blackBg};
     position: fixed;
     left: 0;
     top: 0;
@@ -40,7 +41,7 @@ const Inner = styled.div`
 
     ${media.md`
         padding: 0;
-        margin: 250px ${standardMarginMd}%;
+        margin: 265px ${standardMarginMd}% 100px;
         width: ${columns(12)}%;
     `}
 `;
@@ -48,16 +49,13 @@ const Inner = styled.div`
 const Text = styled.div`
     color: ${colors.white};
     ${fontRegular};
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 1.2;
+    font-size: 24px;
+    line-height: 1.29;
+    letter-spacing: -0.3px;
 
     ${media.sm`
-        font-size: 5.3vw;
-    `}
-
-    ${media.md`
-        font-size: 4.6vw;
+        font-size: 36px;
+        line-height: 1.5;
     `}
 
     a {
@@ -72,19 +70,50 @@ const Text = styled.div`
     }
 
     p {
-        margin: 0.9em 0;
-        line-height: 1.2;
+        margin: 0 0 58px;
+        line-height: 1.29;
+
+        ${media.sm`
+            line-height: 1.5;
+        `}
     }
 `;
 
+const Intro = Text.extend`
+    ${fontAlt};
+    font-size: 28px;
+
+    ${media.sm`
+        font-size: 5.3vw;
+        line-height: 1.2;
+    `}
+
+    ${media.md`
+        font-size: 4.6vw;
+    `}
+
+    p {
+        ${media.sm`
+            margin: 0 0 88px;
+            line-height: 1.2;
+        `}
+    }
+`;
+
+const addTarget = html => html.split(' href="http').join(' target="_blank" href="http');
+
 export default ({
+    intro: {childMarkdownRemark: {html: intro}},
     text: {childMarkdownRemark: {html}}
 }) => (
     <Wrapper>
         <Bg/>
         <Inner>
+            <Intro dangerouslySetInnerHTML={{
+                __html: addTarget(intro)
+            }}/>
             <Text dangerouslySetInnerHTML={{
-                __html: html.split(' href="http').join(' target="_blank" href="http')
+                __html: addTarget(html)
             }}/>
         </Inner>
     </Wrapper>

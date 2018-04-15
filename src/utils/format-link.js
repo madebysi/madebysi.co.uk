@@ -1,1 +1,1 @@
-export default slug => `/${slug || ''}/`.replace(/\/+/g, '/');
+module.exports = slug => `/${slug || ''}/`.replace(/\/+/g, '/');

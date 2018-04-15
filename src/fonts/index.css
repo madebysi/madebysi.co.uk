@@ -9,8 +9,11 @@
 }
 
 @font-face {
-    font-family: "Kepler Std";
-    src:url("./Kepler-Std-Display.otf");
+    font-family: "GT Super Display";
+    src:url("./GT-Super-Display-Regular.eot");
+    src:url("./GT-Super-Display-Regular.eot?#iefix") format("embedded-opentype"),
+        url("./GT-Super-Display-Regular.woff2") format("woff2"),
+        url("./GT-Super-Display-Regular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }

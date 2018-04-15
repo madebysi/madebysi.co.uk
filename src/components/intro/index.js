@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import {
     colors,
-    columns,
     fontAlt,
     media,
     standardMargin,
@@ -48,18 +47,16 @@ const TextHolder = styled.div`
     margin: 0 ${standardMargin}%;
     flex-grow: none;
     line-height: 1.22;
-    ${'' /* letter-spacing: -1.2px; */}
     letter-spacing: 0px;
 
     ${media.sm`
         font-size: 5.4vw;
-        width: 60%;
+        width: 70%;
     `}
 
     ${media.md`
         font-size: 4.7vw;
         margin: 0 ${standardMarginMd}%;
-        width: ${columns(8)}%;
     `}
 `;
 

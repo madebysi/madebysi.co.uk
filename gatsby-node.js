@@ -2,6 +2,7 @@ require('isomorphic-fetch');
 const path = require('path');
 const fs = require('fs');
 const sitemap = require('sitemap');
+const pagePathname = require('./src/utils/page-pathname');
 
 exports.createPages = ({graphql, boundActionCreators}) => {
     const {createLayout, createPage} = boundActionCreators;
@@ -45,10 +46,10 @@ exports.createPages = ({graphql, boundActionCreators}) => {
             .then(pages => {
 
                 pages.map(page => {
-                    console.log('\n=> createPage', `/${page.slug || ''}`);
-                    // console.log('=>', JSON.stringify(page, null, 2));
+                    console.log('\n=> createPage', pagePathname(page.slug));
+
                     return createPage({
-                        path: `/${page.slug || ''}/`.replace('//', '/'),
+                        path: pagePathname(page.slug),
                         component: path.resolve('./src/templates/index.js'),
                         layout: `layout_${page.headerTextColor ? 'light' : 'dark'}`,
                         context: {
@@ -57,11 +58,13 @@ exports.createPages = ({graphql, boundActionCreators}) => {
                     });
                 });
 
+                console.log('\n=> Created', pages.length, 'pages');
+
                 return pages;
             })
             .then(pages => {
                 if (process.env.NODE_ENV === 'production') {
-                    return generateSiteMap(pages.map(p => p.slug || ''));
+                    return generateSiteMap(pages.map(p => pagePathname(p.slug)));
                 }
                 return pages;
             })

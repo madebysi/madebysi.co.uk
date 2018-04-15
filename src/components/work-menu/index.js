@@ -12,7 +12,7 @@ import {
 } from '../../styles';
 import HoverMedia from './hover-media';
 import mobile from 'usfl/platform/mobile';
-import formatLink from '../../utils/format-link';
+import pagePathname from '../../utils/page-pathname';
 
 const isMobile = mobile();
 
@@ -71,12 +71,12 @@ const LinkItem = styled.span`
         margin-bottom: 0;
         &:after {
             content: ", ";
-            opacity: ${({active, hover}) => !hover || !active ? 1 : opacityInactive};
+            opacity: ${({active, hover}) => !hover || !active ? 1 : 0};
             transition: opacity 0.1s linear;
         }
 
         &:last-child:after {
-            content: "";
+            content: ".";
         }
     `}
 `;
@@ -118,7 +118,7 @@ export default class IntroComponent extends Component {
                                         onMouseOut={() => this.setState({
                                             hover: false
                                         })}
-                                        to={formatLink(slug)}>
+                                        to={pagePathname(slug)}>
                                         {title}
                                     </LinkComponent>
                                 </LinkItem>

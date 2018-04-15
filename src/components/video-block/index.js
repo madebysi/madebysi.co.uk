@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     transition: background-color 0.4s ease;
 
     &::after {
-        background-color: ${colors.black};
+        background-color: ${colors.blackBg};
         content: "";
         position: absolute;
         top: 0;

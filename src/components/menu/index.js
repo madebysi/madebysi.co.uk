@@ -12,7 +12,7 @@ import BurgerMenuIcon from './burger-menu.svg';
 import CloseMenuIcon from './close-menu.svg';
 import BurgerMenuIconDark from './burger-menu-dark.svg';
 import CloseMenuIconDark from './close-menu-dark.svg';
-import formatLink from '../../utils/format-link';
+import pagePathname from '../../utils/page-pathname';
 import stopScroll from '../../utils/stop-scroll';
 
 const Container = styled.div`
@@ -24,7 +24,7 @@ const Container = styled.div`
 `;
 
 const Menu = styled.nav`
-    background-color: ${({dark}) => dark ? colors.greyLight : colors.black};
+    background-color: ${({dark}) => dark ? colors.greyLight : colors.blackBg};
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -32,8 +32,8 @@ const Menu = styled.nav`
     top: 0;
     right: ${({isClosed}) => !isClosed ? 0 : -100}%;
     transition: right .2s ease-out;
-    padding: 0 ${standardMargin}%;
-    margin-top: 108px;
+    padding: 85px ${standardMargin}% 0;
+    ${'' /* margin-top: 85px; */}
     flex-grow: 1;
 
     ${media.sm`
@@ -72,7 +72,7 @@ const LinkItem = styled.li`
 
 const MenuLink = styled(Link)`
     ${fontAlt};
-    font-size: 20px;
+    font-size: 36px;
     opacity: 0.4;
     transition: opacity 0.4s ease;
 
@@ -83,6 +83,12 @@ const MenuLink = styled(Link)`
     ${media.sm`
         font-size: 20px;
     `}
+
+    &:hover {
+        ${media.sm`
+            opacity: 1;
+        `}
+    }
 `;
 
 const LinkLabel = styled.span`
@@ -105,6 +111,7 @@ const BurgerMenuLink = styled.div`
     width: 28px;
     height: 19px;
     text-indent: -9999em;
+    z-index: 1;
 
     ${media.sm`
         display: none;
@@ -132,6 +139,7 @@ class MenuComponent extends Component {
         const {
             dark,
             links,
+            location: {pathname},
             LinkComponent = MenuLink
         } = this.props;
 
@@ -145,8 +153,9 @@ class MenuComponent extends Component {
                             <LinkItem key={label}>
                                 <LinkComponent
                                     onClick={this.onClickBurgerLink}
-                                    exact={!(url.replace(/\//g, ''))}
-                                    to={formatLink(url)}
+                                    // exact={!(url.replace(/\//g, ''))}
+                                    exact={pathname.replace(/\//g, '') === 'about'}
+                                    to={pagePathname(url)}
                                     activeClassName="active">
                                     <LinkLabel dark={dark}>
                                         {label}

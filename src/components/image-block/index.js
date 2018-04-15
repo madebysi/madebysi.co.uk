@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import {
     media
 } from '../../styles';
 
 const Wrapper = styled.div`
     position: relative;
+    width: 100%;
+`;
+
+const Img = styled.img`
+    display: block;
     width: 100%;
 `;
 
@@ -29,10 +33,22 @@ class ImgLoader extends Component {
     }
 
     render() {
+        const {
+            image: {
+                title,
+                sizes: {
+                    src,
+                    srcSet
+                }
+            }
+        } = this.props;
+
         return (
             <ImgHolder loaded={this.state.loaded}>
                 <Img
-                    sizes={this.props.sizes}
+                    alt={title}
+                    src={src}
+                    srcSet={srcSet}
                     onLoad={() => this.setState({
                         loaded: true
                     })}
@@ -47,7 +63,7 @@ export default ({
 }) => (
     <Wrapper>
         <ImgLoader
-            sizes={image.sizes}
+            image={image}
         />
     </Wrapper>
 );

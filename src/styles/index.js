@@ -110,7 +110,7 @@ injectGlobal`
     }
 
     body {
-        background-color: ${colors.black};
+        background-color: ${colors.blackBg};
         color: ${colors.black};
         ${fontRegular};
         height: 100%;

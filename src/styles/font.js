@@ -1,7 +1,7 @@
 import {css} from 'styled-components';
 
-const fontA = 'GT America Light';
-const fontB = 'Kepler Std';
+const fontA = '"GT America Light"';
+const fontB = '"GT Super Display"';
 
 export const fontRegular = css`
   font-family: ${fontA}, sans-serif;

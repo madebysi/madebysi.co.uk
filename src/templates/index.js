@@ -61,7 +61,6 @@ export default ({
                 <link rel="apple-touch-icon" sizes="180x180" href={`${favicon}?w=180`}/>
                 <link rel="icon" type="image/png" sizes="192x192" href={`${favicon}?w=192`}/>
                 <link rel="icon" type="image/png" sizes="32x32" href={`${favicon}?w=32`}/>
-                <link rel="stylesheet" href="https://use.typekit.net/iox6avl.css"/>
             </Helmet>
             {process.env.NODE_ENV === 'development' ? (
                 <DebugData
@@ -137,6 +136,11 @@ query PageQuery($id: String!) {
       }
       ... on ContentfulAbout {
         id
+        intro {
+          childMarkdownRemark {
+            html
+          }
+        }
         text {
           childMarkdownRemark {
             html
@@ -150,6 +154,7 @@ query PageQuery($id: String!) {
         heroMedia {
           ...VideoFragment
         }
+        tint
       }
       ... on ContentfulImageBlock {
         id

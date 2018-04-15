@@ -3,18 +3,16 @@ import styled from 'styled-components';
 import Header from '../components/header';
 import {
     colors
-    // maxSiteWidth
 } from '../styles';
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: ${colors.black};
+    background-color: ${colors.blackBg};
     transition: background-color 0.2s ease;
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-    ${'' /* max-width: ${maxSiteWidth}px; */}
     margin: 0 auto;
 `;
 
