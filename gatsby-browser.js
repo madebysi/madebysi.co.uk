@@ -6,6 +6,23 @@ import getTransitionStyle from './src/utils/get-transition-style';
 const timeout = 350;
 const historyExitingEventType = 'history::exiting';
 
+(function() {
+    if (typeof window.CustomEvent === 'function') {
+        return;
+    }
+
+    function CustomEvent (event, params) {
+        params = params || {bubbles: false, cancelable: false};
+        const evt = document.createEvent('CustomEvent');
+        evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+        return evt;
+    }
+
+    CustomEvent.prototype = window.Event.prototype;
+
+    window.CustomEvent = CustomEvent;
+}());
+
 const getUserConfirmation = (pathname, callback) => {
     const event = new CustomEvent(historyExitingEventType, {detail: {pathname}});
     window.dispatchEvent(event);

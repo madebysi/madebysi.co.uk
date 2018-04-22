@@ -65,6 +65,12 @@ class VideoLoader extends Component {
         loaded: false
     }
 
+    onReady() {
+        this.setState({
+            loaded: true
+        });
+    }
+
     render() {
         const {
             url,
@@ -74,9 +80,8 @@ class VideoLoader extends Component {
         return (
             <Video
                 loaded={this.state.loaded}
-                onCanPlay={() => this.setState({
-                    loaded: true
-                })}
+                onCanPlay={() => this.onReady()}
+                onLoadedMetadata={() => this.onReady()}
                 muted
                 autoPlay
                 loop

@@ -93,7 +93,7 @@ class Heading extends Component {
         if (typeof window !== 'undefined') {
             window.setTimeout(() => this.setState({
                 active: true
-            }), 1000);
+            }), 1200);
         }
     }
 

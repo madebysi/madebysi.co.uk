@@ -45,10 +45,6 @@ class ImgLoader extends Component {
             }
         } = this.props;
 
-        console.log('this.props', this.props);
-
-        console.log('->', 100 / aspectRatio);
-
         return (
             <ImgHolder
                 aspectRatio={aspectRatio}
