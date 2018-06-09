@@ -69,7 +69,8 @@ const Video = styled.video`
     display: block;
     width: 100%;
 
-    &::-webkit-media-controls {
+    &::-webkit-media-controls,
+    &::-webkit-media-controls-start-playback-button {
         display: none !important;
     }
 `;

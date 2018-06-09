@@ -11,7 +11,6 @@ const props = {
         title: '1280x640',
         description: '',
         resolutions: {
-            base64: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAAAAACRPiE6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gMBAAEqquT1CwAAAChJREFUCNdjOIMFMFBD8PTBffuPnjhw6CCKyv179hw5uGfffipahAYAFfqeo4iQyXAAAAAASUVORK5CYII=',
             aspectRatio: 2,
             width: 400,
             height: 200,
@@ -26,7 +25,6 @@ const props = {
             contentType: 'image/png'
         },
         sizes: {
-            base64: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAAAAACRPiE6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gMBAAEqquT1CwAAAChJREFUCNdjOIMFMFBD8PTBffuPnjhw6CCKyv179hw5uGfffipahAYAFfqeo4iQyXAAAAAASUVORK5CYII=',
             aspectRatio: 2,
             src: '//images.contentful.com/s4q9xedygljx/6a87u77d7OA84MSkc2qiuQ/31ca7c6bcc72aa37f6ba09d4fe2c5aaf/1280x640.png?w=800&q=50&fm=webp',
             srcSet: '//images.contentful.com/s4q9xedygljx/6a87u77d7OA84MSkc2qiuQ/31ca7c6bcc72aa37f6ba09d4fe2c5aaf/1280x640.png?w=200&h=100&q=50&fm=webp 200w,\n//images.contentful.com/s4q9xedygljx/6a87u77d7OA84MSkc2qiuQ/31ca7c6bcc72aa37f6ba09d4fe2c5aaf/1280x640.png?w=400&h=200&q=50&fm=webp 400w,\n//images.contentful.com/s4q9xedygljx/6a87u77d7OA84MSkc2qiuQ/31ca7c6bcc72aa37f6ba09d4fe2c5aaf/1280x640.png?w=800&h=400&q=50&fm=webp 800w,\n//images.contentful.com/s4q9xedygljx/6a87u77d7OA84MSkc2qiuQ/31ca7c6bcc72aa37f6ba09d4fe2c5aaf/1280x640.png?w=1200&h=600&q=50&fm=webp 1200w,\n//images.contentful.com/s4q9xedygljx/6a87u77d7OA84MSkc2qiuQ/31ca7c6bcc72aa37f6ba09d4fe2c5aaf/1280x640.png?w=1280&h=640&q=50&fm=webp 1280w',
@@ -35,7 +33,6 @@ const props = {
             sizes: '(max-width: 800px) 100vw, 800px'
         },
         resize: {
-            base64: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAAAAACRPiE6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gMBAAEqquT1CwAAAChJREFUCNdjOIMFMFBD8PTBffuPnjhw6CCKyv179hw5uGfffipahAYAFfqeo4iQyXAAAAAASUVORK5CYII=',
             src: '//images.contentful.com/s4q9xedygljx/6a87u77d7OA84MSkc2qiuQ/31ca7c6bcc72aa37f6ba09d4fe2c5aaf/1280x640.png?w=400&fl=progressive&q=50',
             width: 400,
             height: 200,

@@ -216,7 +216,6 @@ fragment ImageFragment on ContentfulAsset {
   title
   description
   resolutions {
-    base64
     aspectRatio
     width
     height
@@ -231,7 +230,6 @@ fragment ImageFragment on ContentfulAsset {
     contentType
   }
   sizes(quality: 100) {
-    base64
     aspectRatio
     src
     srcSet
@@ -240,7 +238,6 @@ fragment ImageFragment on ContentfulAsset {
     sizes
   }
   resize {
-    base64
     src
     width
     height
