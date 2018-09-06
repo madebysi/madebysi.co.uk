@@ -11,8 +11,6 @@ import {
     marginDesktop,
     columnDesktop
 } from '../styles';
-import Label from '../components/label';
-import Text from '../components/text';
 
 const Main = styled.main`
     display: flex;
@@ -56,10 +54,8 @@ export default props => {
     return (
         <Main>
             <Section>
-                <Label text="404 page not found" el="h1"/>
-                <Text
-                    text={`There is no page at ${pathname}. If you were trying to reach another page, perhaps you can find it below:`}
-                />
+                <h1>404 page not found</h1>
+                <p>There is no page at ${pathname}. If you were trying to reach another page, perhaps you can find it below:</p>
                 <List>
                     {props.data.allSitePage.edges
                         .map(({node}) => node)
@@ -67,7 +63,7 @@ export default props => {
                         .map(({path}) => (
                             <Item key={path}>
                                 <Link to={path}>
-                                    <Text text={path}/>
+                                    {path}
                                 </Link>
                             </Item>)
                         )}
